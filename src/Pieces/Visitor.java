@@ -1,5 +1,4 @@
-import Pieces.Bishop;
-import Pieces.*;
+package Pieces;
 
 public interface Visitor {
     public Piece visit(Bishop bishop);

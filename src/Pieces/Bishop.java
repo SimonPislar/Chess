@@ -10,6 +10,11 @@ public class Bishop extends Piece {
     }
 
     @Override
+    public Piece accept(Visitor v) {
+        return v.visit(this);
+    }
+
+    @Override
     public boolean legalMove() {
         return false;
     }

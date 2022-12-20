@@ -17,6 +17,8 @@ public abstract class Piece {
         }
     }
 
+    public abstract Piece accept(Visitor v);
+
     public Position getPosition() {
         return this.position;
     }
