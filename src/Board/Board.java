@@ -1,6 +1,9 @@
 package Board;
 
+import Pieces.*;
 import Position.*;
+
+import java.awt.*;
 
 public class Board {
     Square[][] board;
@@ -13,7 +16,11 @@ public class Board {
         StringBuilder stringBuilder = new StringBuilder();
         for(Square[] row : this.board) {
             for(Square square : row) {
-                stringBuilder.append(square.toString());
+                if (square.isOccupied()) {
+                    stringBuilder.append(square.getPiece().toString());
+                } else {
+                    stringBuilder.append(square.toString());
+                }
             }
             stringBuilder.append('\n');
         }
@@ -49,12 +56,43 @@ public class Board {
     }
 
     public void prepareBoard() {
-        // add pieces to the board in the correct positions
+        prepareWhiteSide();
+        prepareBlackSide();
     }
 
-    public static void main(String[] args) {
-        Board board = new Board();
-        board.prepareBoard();
-        System.out.println(board);
+    private void prepareBlackSide() {
+        for (Square square : this.board[6]) {
+            square.setPiece(new Pawn(Color.BLACK, square.getPosition()));
+        }
+        int index = 0;
+        for (Square square : this.board[7]) {
+            switch (index) {
+                case 0, 7 -> square.setPiece(new Rook(Color.BLACK, square.getPosition()));
+                case 1, 6 -> square.setPiece(new Knight(Color.BLACK, square.getPosition()));
+                case 2, 5 -> square.setPiece(new Bishop(Color.BLACK, square.getPosition()));
+                case 3 -> square.setPiece(new King(Color.BLACK, square.getPosition()));
+                case 4 -> square.setPiece(new Queen(Color.BLACK, square.getPosition()));
+                default -> throw new RuntimeException("Index of board has to be 0-7");
+            }
+            index++;
+        }
+    }
+
+    private void prepareWhiteSide() {
+        for (Square square : this.board[1]) {
+            square.setPiece(new Pawn(Color.WHITE, square.getPosition()));
+        }
+        int index = 0;
+        for (Square square : this.board[0]) {
+            switch (index) {
+                case 0, 7 -> square.setPiece(new Rook(Color.WHITE, square.getPosition()));
+                case 1, 6 -> square.setPiece(new Knight(Color.WHITE, square.getPosition()));
+                case 2, 5 -> square.setPiece(new Bishop(Color.WHITE, square.getPosition()));
+                case 3 -> square.setPiece(new King(Color.WHITE, square.getPosition()));
+                case 4 -> square.setPiece(new Queen(Color.WHITE, square.getPosition()));
+                default -> throw new RuntimeException("Index of board has to be 0-7");
+            }
+            index++;
+        }
     }
 }

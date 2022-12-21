@@ -11,7 +11,7 @@ public class Square {
 
     public Square(Position position) {
         this.position = position;
-        this.occupied = true;
+        this.occupied = false;
         this.piece = null;
     }
 
