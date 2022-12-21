@@ -14,6 +14,11 @@ public class King extends Piece{
     }
 
     @Override
+    public String toString() {
+        return "King";
+    }
+
+    @Override
     public Piece accept(Visitor v) {
         return v.visit(this);
     }

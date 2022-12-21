@@ -15,6 +15,10 @@ public class Square {
         this.piece = null;
     }
 
+    public String toString() {
+        return this.position.toString();
+    }
+
     public Position getPosition() {
         return this.position;
     }

@@ -12,6 +12,11 @@ public class Rook extends Piece {
     }
 
     @Override
+    public String toString() {
+        return "Rook";
+    }
+
+    @Override
     public Piece accept(Visitor v) {
         return v.visit(this);
     }

@@ -9,11 +9,22 @@ public class Board {
         this.board = makeBoard();
     }
 
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Square[] row : this.board) {
+            for(Square square : row) {
+                stringBuilder.append(square.toString());
+            }
+            stringBuilder.append('\n');
+        }
+        return stringBuilder.toString();
+    }
+
     private Square[][] makeBoard() {
         Square[][] board = new Square[8][8];
         for(int i = 0; i < 8; i++) {
             for(int j = 0; j < 8; j++) {
-                board[i][j] = new Square(makePosition(i, j));
+                board[i][j] = new Square(makePosition(i + 1, j + 1));
             }
         }
         return board;
@@ -43,5 +54,7 @@ public class Board {
 
     public static void main(String[] args) {
         Board board = new Board();
+        board.prepareBoard();
+        System.out.println(board);
     }
 }

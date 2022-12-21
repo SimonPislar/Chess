@@ -10,6 +10,10 @@ public class Position {
         this.row = row;
     }
 
+    public String toString() {
+        return "[" + this.column.toString() + this.row.toString() + "]";
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other instanceof Position pos) {

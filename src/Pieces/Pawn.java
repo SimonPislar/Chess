@@ -10,6 +10,11 @@ public class Pawn extends Piece {
     }
 
     @Override
+    public String toString() {
+        return "Pawn";
+    }
+
+    @Override
     public Piece accept(Visitor v) {
         return v.visit(this);
     }

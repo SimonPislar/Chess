@@ -1,5 +1,7 @@
 package Position;
 
+import static java.lang.String.valueOf;
+
 public class Column {
 
     private char columnIndex;
@@ -15,6 +17,10 @@ public class Column {
                 throw new IllegalArgumentException("Position.Column value has to be A-H");
             }
         };
+    }
+
+    public String toString() {
+        return valueOf(this.columnIndex);
     }
 
     @Override

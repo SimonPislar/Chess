@@ -1,5 +1,7 @@
 package Position;
 
+import static java.lang.String.valueOf;
+
 public class Row {
 
     private int rowIndex;
@@ -14,6 +16,10 @@ public class Row {
         } else {
             throw new IllegalArgumentException("Position.Row index has to be between 1 and 8");
         }
+    }
+
+    public String toString() {
+        return valueOf(this.rowIndex);
     }
 
     @Override
